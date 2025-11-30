@@ -21,8 +21,7 @@ const users = [
 app.use((req, res, next) => {
     // Brak wymuszenia HTTPS.
     // Przeglądarka nie wie, że powinna łączyć się tylko szyfrowanym kanałem.
-    // TODO #4: Odkomentuj poniższą linię, aby włączyć HSTS:
-    
+    // TODO #4
     // res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     
     next();
@@ -80,12 +79,9 @@ const verifyToken = (req, res, next) => {
 // --- ZADANIE 3: SECURE COOKIES (Nagi transport ciasteczek) ---
 
 app.post('/api/cookie-login', (req, res) => {
-    // [VULNERABILITY 3]: Ciasteczko bez flag bezpieczeństwa
-    // TODO: Dodaj secure: true oraz httpOnly: true
+    // TODO #3
     res.cookie('session_id', 'tajna-sesja-123', { 
         maxAge: 900000,
-        // secure: true,
-        // httpOnly: true
     });
     res.json({ message: "Zapisano ciasteczko (sprawdź nagłówki!)" });
 });
